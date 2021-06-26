@@ -4,4 +4,9 @@ self.addEventListener("install", e => {
 			return cache.addAll(["./", "./src/master.css", "./images/logo192.png"])
 		})
 	)
+});
+
+self.addEventListener("fetch", e => {
+	console.log(`Interceptin fetch request for: ${e.request.url}`);
+
 })
