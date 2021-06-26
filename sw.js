@@ -7,6 +7,9 @@ self.addEventListener("install", e => {
 });
 
 self.addEventListener("fetch", e => {
-	console.log(`Interceptin fetch request for: ${e.request.url}`);
-
+	e.respondWith(
+		caches.math(e.request).then(response => {
+			return response || fetch(e.request);
+		})
+	);
 })
